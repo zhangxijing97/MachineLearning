@@ -30,7 +30,7 @@ Get status
 git status
 ```
 
-Adds your hello_world.txt file to the staging area in Gi
+Adds your hello_world.txt file to the staging area
 ```
 git add hello_world.txt
 ```
