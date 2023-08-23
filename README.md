@@ -40,7 +40,7 @@ Add message to the commit
 git commit -m "Add hello_world.txt"
 ```
 
-Get detail of author who made the commit and the date and time of when the commit was made
+Get detail of author who made the commit and the date and time of when the commit was made, press “q” to escape
 ```
 git log
 ```
