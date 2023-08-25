@@ -69,7 +69,7 @@ def compute_model_output(x, w, b):
     return f_wb
 
 # call the compute_model_output function and plot the output
-tmp_f_wb = compute_model_output(x_train, w, b,)
+tmp_f_wb = compute_model_output(x_train, w, b)
 # Plot our model prediction
 plt.plot(x_train, tmp_f_wb, c='b',label='Our Prediction')
 # Plot the data points

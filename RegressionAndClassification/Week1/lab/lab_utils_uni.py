@@ -396,3 +396,5 @@ def plt_gradients(x_train,y_train, f_compute_cost, f_compute_gradient):
     Q = ax[1].quiver(X, Y, U, V, color_array, units='width', )
     ax[1].quiverkey(Q, 0.9, 0.9, 2, r'$2 \frac{m}{s}$', labelpos='E',coordinates='figure')
     ax[1].set_xlabel("w"); ax[1].set_ylabel("b")
+
+#%%
