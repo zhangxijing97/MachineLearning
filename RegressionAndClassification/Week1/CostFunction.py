@@ -30,10 +30,10 @@ wArray = np.arange(0, 400)
 
 def compute_model_output(x, y, w, b):
     m = w.shape[0]
-    f_wb = np.zeros(m)
+    f_cost = np.zeros(m)
     for i in range(m):
-        f_wb[i] = compute_cost(x, y, i, b)
-    return f_wb
+        f_cost[i] = compute_cost(x, y, i, b)
+    return f_cost
 
 # Plot our cost function
 tmp_f_cost = compute_model_output(x_train, y_train, wArray, b)
