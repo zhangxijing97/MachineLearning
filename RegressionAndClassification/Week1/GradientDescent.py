@@ -27,6 +27,9 @@ def compute_cost(x, y, w, b):
     return total_cost
 
 # 2. compute_gradient
+# Conventions:
+# 1. ∂𝐽(𝑤,𝑏)/∂𝑏 is dj_db
+# 2. w.r.t is With Respect To
 def compute_gradient(x, y, w, b):
     """
     Computes the gradient for linear regression
@@ -46,14 +49,16 @@ def compute_gradient(x, y, w, b):
 
     for i in range(m):
         f_wb = w * x[i] + b
-        dj_dw_i = (f_wb - y[i]) * x[i]
-        dj_db_i = f_wb - y[i]
-        dj_db += dj_db_i
-        dj_dw += dj_dw_i
-    dj_dw = dj_dw / m
-    dj_db = dj_db / m
+        dj_dw_i = (f_wb - y[i]) * x[i] # ∂𝐽(𝑤,𝑏)/∂w = 1/m*∑( fw,b(x(i)) - y(i) )* x(i)
+        dj_db_i = f_wb - y[i] # ∂𝐽(𝑤,𝑏)/∂𝑏 = 1/m*∑( fw,b(x(i)) - y(i) )
+        dj_db += dj_db_i # update derivative of ∂𝐽(𝑤,𝑏)/∂b
+        dj_dw += dj_dw_i # update derivative of ∂𝐽(𝑤,𝑏)/∂w
+    dj_dw = dj_dw / m # complete last step: 1/m
+    dj_db = dj_db / m # complete last step: 1/m
 
     return dj_dw, dj_db
+    # The gradient of the cost with respect to the parameters w or b
+    # gradient = derivative = rate of change of a function
 
 # 3. gradient_descent
 def gradient_descent(x, y, w_in, b_in, alpha, num_iters, cost_function, gradient_function):
@@ -85,7 +90,7 @@ def gradient_descent(x, y, w_in, b_in, alpha, num_iters, cost_function, gradient
 
     for i in range(num_iters):
         # Calculate the gradient and update the parameters using gradient_function
-        dj_dw, dj_db = gradient_function(x, y, w, b)
+        dj_dw, dj_db = gradient_function(x, y, w, b) # get ∂𝐽(𝑤,𝑏)/∂w and ∂𝐽(𝑤,𝑏)/∂b
 
         # Update Parameters using equation (3) above
         b = b - alpha * dj_db
@@ -93,8 +98,8 @@ def gradient_descent(x, y, w_in, b_in, alpha, num_iters, cost_function, gradient
 
         # Save cost J at each iteration
         if i < 100000:  # prevent resource exhaustion
-            J_history.append(cost_function(x, y, w, b))
-            p_history.append([w, b])
+            J_history.append(cost_function(x, y, w, b)) # store all total_cost
+            p_history.append([w, b]) # store all w,b
         # Print cost every at intervals 10 times or as many iterations if < 10
         if i % math.ceil(num_iters / 10) == 0:
             print(f"Iteration {i:4}: Cost {J_history[-1]:0.2e} ",
@@ -108,7 +113,7 @@ w_init = 0
 b_init = 0
 # some gradient descent settings
 iterations = 10000
-tmp_alpha = 1.0e-2
+tmp_alpha = 1.0e-2 # learning rate
 # run gradient descent
 w_final, b_final, J_hist, p_hist = gradient_descent(x_train ,y_train, w_init, b_init, tmp_alpha, iterations, compute_cost, compute_gradient)
 print(f"(w,b) found by gradient descent: ({w_final:8.4f},{b_final:8.4f})")
