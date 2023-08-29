@@ -23,7 +23,6 @@ print(X_train)
 print(f"y Shape: {y_train.shape}, y Type:{type(y_train)})")
 print(y_train)
 
-
 def predict_single_loop(x, w, b):
     """
     single predict using linear regression

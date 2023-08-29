@@ -191,6 +191,7 @@ print("")
 print("4.4.2 Slicing")
 # 4.4.2 Slicing
 #vector 2-D slicing operations
+# reshape (-1, 2). row unknown, column 2
 a = np.arange(20).reshape(-1, 10)
 print(f"a = \n{a}")
 
