@@ -1,5 +1,9 @@
 # MachineLearning
 
+Backup for Machine Learning courses:
+
+[Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)
+
 Create a new directory
 ```
 mkdir repos
